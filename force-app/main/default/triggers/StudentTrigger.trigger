@@ -6,4 +6,5 @@ trigger StudentTrigger on Student__c (before insert, before update) {
             StudentTriggerHandler.setReservationPercentage(Trigger.new);
         }
     }
+    //testing for deployment
 }
