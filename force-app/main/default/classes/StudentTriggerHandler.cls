@@ -24,18 +24,20 @@ public class StudentTriggerHandler {
             }
         }
 
-      //applying business logic here 
+     
         for (Student__c stu : studentList) {
             Boolean hasParent = (stu.Parent__c != null && alumniIds.contains(stu.Parent__c));
             Boolean hasGrandParent = (stu.Grandparent__c != null && alumniIds.contains(stu.Grandparent__c));
 
             if (!hasParent && !hasGrandParent) {
-                stu.Reservation_Percantage__c = 20;  // First-generation
+                stu.Reservation_Percantage__c = 20;  // First-generation student 
             } else if (!hasParent && hasGrandParent) {
                 stu.Reservation_Percantage__c = 10;  // Only grandparent studied
             } else if (hasParent && !hasGrandParent) {
                 stu.Reservation_Percantage__c = 5;   // Only parent studied
             } else {
+
+                
                 stu.Reservation_Percantage__c = 0;   // Both studied
             }
         }
