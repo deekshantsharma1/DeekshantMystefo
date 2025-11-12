@@ -24,10 +24,27 @@ public with sharing class OpportunityLineItemTriggerHandler {
             List<Opportunity> opptoupdate = new List<Opportunity>();
 
             for(opportunity opp :oppList){
-                //will put the logic here to chek if opp needs approval or not
+                if (opp.Status__c != 'Submitted for Approval') {
+                    opp.Status__c = 'Submitted for Approval';
+                    oppToUpdate.add(opp);
+                }
+            }
+            if (!oppToUpdate.isEmpty()) {
+                update oppToUpdate;
+            }
+            // Submit for approval
+        for (Opportunity opp : oppToUpdate) {
+            Approval.ProcessSubmitRequest req = new Approval.ProcessSubmitRequest();
+            req.setObjectId(opp.Id);
+            try {
+                Approval.ProcessResult result = Approval.process(req);
+                System.debug('Approval submitted for Opportunity Id: ' + opp.Id);
+            } catch (Exception e) {
+                System.debug('Error while submitting for approval: ' + e.getMessage());
             }
 
         }
 
     }
+}
 }
