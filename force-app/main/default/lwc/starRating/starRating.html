@@ -1,0 +1,23 @@
+<template>
+    <div class ="star-rating-controller">
+        <template for:each={stars} for:item="star">
+            <span key={star}
+            class={star.class}
+            data-value={star.value}
+            onmouseover ={handleMouseOver}
+            onmouseout={handleMouseOut}
+            onclick={handleClick}>
+            ★
+            </span>
+            
+
+
+
+        </template>
+           
+
+
+
+
+    </div>
+</template>
