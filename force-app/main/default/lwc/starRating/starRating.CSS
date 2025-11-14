@@ -1,0 +1,15 @@
+.star {
+    font-size: 2rem;
+    cursor: pointer;
+    color: lightgray;
+}
+
+.filled {
+    color: gold;
+}
+
+.star-container {
+    display: flex;
+    gap: 4px;
+}
+  
