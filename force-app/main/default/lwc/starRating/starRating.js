@@ -6,9 +6,9 @@ export default class StarRating extends LightningElement {
 
     @api recordId;
 
-    savedRating = 0;   // Rating from DB
-    isRated = false;   // Whether user has already rated
-    stars = [];        // Array to display on UI
+    savedRating = 0;   
+    isRated = false;   
+    stars = [];        
 
     connectedCallback() {
         this.loadRating();
@@ -27,7 +27,7 @@ export default class StarRating extends LightningElement {
             });
     }
 
-    // Generate stars dynamically
+    
     generateStars(value) {
         this.stars = [];
 
@@ -44,26 +44,26 @@ export default class StarRating extends LightningElement {
         const index = Number(event.target.dataset.index);
 
         if (!this.isRated) {
-            // Not rated → show stars only on hover
+           
             this.generateStars(index);
         } else {
-            // Rated → temporarily show hover preview
+            
             this.generateStars(index);
         }
     }
 
-    // When mouse leaves the stars
+    
     handleHoverOut() {
         if (!this.isRated) {
-            // Not rated → revert to empty stars
+            
             this.generateStars(0);
         } else {
-            // Rated → revert to saved rating
+            
             this.generateStars(this.savedRating);
         }
     }
 
-    // When user clicks a star
+   
     handleClick(event) {
         const index = Number(event.target.dataset.index);
 
