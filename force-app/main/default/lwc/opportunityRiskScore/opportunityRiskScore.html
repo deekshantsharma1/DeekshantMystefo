@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Opportunity Risk Score">
+    <div class="slds-p-around_medium">
+    <p class="slds-text-heading_small"><b>Risk Score:</b> {riskScore}</p>
+    <p class="slds-m-top_x-small"><b>Risk Level:</b> {riskLevel}</p>
+    
+    
+    <div class="slds-m-top_small">
+    <lightning-badge label={riskLevel}></lightning-badge>
+    </div>
+    
+    
+    <template if:true={isHighRisk}>
+    <div class="slds-m-top_medium">
+    <lightning-button
+    variant="destructive"
+    label="Submit for Approval"
+    onclick={handleApproval}>
+    </lightning-button>
+    </div>
+    </template>
+    </div>
+    </lightning-card>
+    </template>
